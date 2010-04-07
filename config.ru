@@ -6,4 +6,4 @@ disable :run
 
 require 'jarvis'
 
-run Sinatra.application
+run Sinatra::Application
