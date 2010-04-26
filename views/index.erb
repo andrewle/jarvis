@@ -20,7 +20,18 @@
   <div class="toolbar"> 
     <h1>Jarvis</h1> 
   </div>
-	
+	<ul class="rounded">
+		<li class="arrow"><a href="#typeit">Type It</a></li>
+		<li class="arrow"><a href="#pandora">Pandora</a></li>
+	</ul>
+</div>
+
+<div id="typeit">
+	<div class="toolbar"> 
+    <h1>Type it</h1>
+		<a href="#" class="back">Back</a>
+  </div>
+
 	<form action="http://jarvis.local/" method="post" accept-charset="utf-8">
 		<ul class="edit rounded"> 
 			<li><input type="text" name="typed_text" placeholder="Type out some text to send to Jarvis" id="typed_text" /></li>
@@ -29,5 +40,22 @@
 	</form>
 </div>
 
+<div id="pandora">
+	<div class="toolbar"> 
+    <h1>Pandora</h1>
+		<a href="#" class="back">Back</a>
+  </div>
+
+	<form action="http://jarvis.local/pandora" method="post" accept-charset="utf-8">
+		<ul class="rounded"> 
+			<li><a href="#" rel="playpause">Start/Play/Pause Pandora</a></li>
+		</ul>
+		<ul class="rounded">
+			<li><a href="#" rel="thumb_up">Thumb Up</a></li>
+			<li><a href="#" rel="thumb_down">Thumb Down</a></li>
+			<li><a href="#" rel="skip">Skip Song</a></li>
+		</ul>
+	</form>
+</div>
 </body>
 </html>
