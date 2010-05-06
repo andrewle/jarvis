@@ -52,7 +52,7 @@ end
 post '/netflix/:method' do
   methods = {
     :next_episode => { :x => 0.62, :y => 0.61 },
-    :playpause   => { :x => 0.20, :y => 0.98 }
+    :playpause   => { :x => 0.17, :y => 0.98 }
   }
   unless methods.has_key?(params[:method].intern)
     status 404
