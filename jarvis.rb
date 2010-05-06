@@ -51,7 +51,7 @@ end
 
 post '/netflix/:method' do
   methods = {
-    :next_episode => { :x => 0.62, :y => 0.61 },
+    :next_episode => { :x => 0.64, :y => 0.63 },
     :playpause   => { :x => 0.17, :y => 0.98 }
   }
   unless methods.has_key?(params[:method].intern)
@@ -63,7 +63,7 @@ post '/netflix/:method' do
   bin = File.dirname(__FILE__) + "/bin/click"
   m   = params[:method].intern
   
-  if m == :playpause
+  if m == :playpause or m == :next_episode
     system <<-DOC
     { osascript -e "
       tell application \\\"Finder\\\"

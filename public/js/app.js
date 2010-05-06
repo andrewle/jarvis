@@ -20,7 +20,7 @@ $(function () {
 		var url = $(this).parents('form').attr('action') + "/" + $(this).attr('rel'),
 			elm = $(this);
 		event.preventDefault();
-
+		
 		elm.addClass('loading');
 		$.post(url, {}, function (data, textStatus) {
 			elm.removeClass('loading active');
