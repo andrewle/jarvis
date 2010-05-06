@@ -48,3 +48,54 @@ post '/pandora/:method' do
   }
   DOC
 end
+
+post '/netflix/:method' do
+  methods = {
+    :next_episode => { :x => 0.62, :y => 0.61 },
+    :playpause   => { :x => 0.24, :y => 0.98 }
+  }
+  unless methods.has_key?(params[:method].intern)
+    status 404
+    "Not found"
+    return
+  end
+  
+  bin = File.dirname(__FILE__) + "/bin/click"
+  m   = params[:method].intern
+  
+  if m == :playpause
+    system <<-DOC
+    { osascript -e "
+      tell application \\\"Finder\\\"
+      	set screenSize to bounds of window of desktop
+      	set screenWidth to item 3 of screenSize
+      	set screenHeight to item 4 of screenSize
+      end tell
+
+      set xpos to (screenWidth * #{methods[m][:x]})
+      set ypos to (screenHeight * #{methods[m][:y]})
+
+      do shell script \\\"#{bin} -x \\\" & xpos & \\\" -y \\\" & ypos
+      delay 0.5
+      do shell script \\\"#{bin} -x \\\" & xpos & \\\" -y \\\" & ypos
+      "
+    }
+    DOC
+  else
+    system <<-DOC
+    { osascript -e "
+      tell application \\\"Finder\\\"
+      	set screenSize to bounds of window of desktop
+      	set screenWidth to item 3 of screenSize
+      	set screenHeight to item 4 of screenSize
+      end tell
+
+      set xpos to (screenWidth * #{methods[m][:x]})
+      set ypos to (screenHeight * #{methods[m][:y]})
+
+      do shell script \\\""#{bin} -x \\\" & xpos & \\\" -y \\\" & ypos
+      "
+    }
+    DOC
+  end
+end
